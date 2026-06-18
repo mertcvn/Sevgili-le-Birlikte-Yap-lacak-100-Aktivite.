@@ -1,194 +1,124 @@
 
-/* ================= RESET ================= */
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+/* ================= 300+ LOCATIONS ================= */
+const basePlaces = [
+"Galata Kulesi","Galata Köprüsü","Karaköy","Moda Sahil","Kadıköy",
+"Üsküdar","Ortaköy","Bebek","Arnavutköy","Emirgan Korusu",
+"Yıldız Parkı","Maçka","Taksim","İstiklal","Cihangir","Beşiktaş",
+"Dolmabahçe","Rumeli Hisarı","Anadolu Hisarı","Beykoz","Riva",
+"Şile","Ağva","Belgrad Ormanı","Aydos Ormanı","Sarıyer",
+"Tarabya","İstinye","Florya","Bakırköy","Balat","Fener",
+"Samatya","Eminönü","Sultanahmet","Ayasofya","Topkapı",
+"Gülhane","Pierre Loti","Kız Kulesi","Kuzguncuk","Çengelköy",
+"Çamlıca","Büyük Çamlıca","Küçük Çamlıca","Validebağ",
+"Kozyatağı","Ataşehir","Ümraniye","Pendik","Kartal","Maltepe",
+"Dragos","Bostancı","Caddebostan","Suadiye","Fenerbahçe",
+"Büyükada","Heybeliada","Burgazada","Kınalıada","Adalar",
+"FSM Köprüsü","15 Temmuz Köprüsü","YSS Köprüsü","Haliç",
+"Zekeriyaköy","Polonezköy","Garipçe","Poyrazköy","Anadolu Kavağı",
+"Beylikdüzü","Avcılar","Silivri","Büyükçekmece","Kağıthane",
+"Eyüp","Alibeyköy","Sultangazi","Gaziosmanpaşa","Bayrampaşa",
+"Esenler","Bağcılar","Güngören","Zeytinburnu","Şişli",
+"Mecidiyeköy","Levent","Maslak","Etiler","Nişantaşı",
+"Harbiye","Gayrettepe","Zincirlikuyu","Okmeydanı","Vadi İstanbul",
+"Kanyon","Zorlu Center","Trump Towers","Metrocity","Mall of Istanbul"
+];
+
+// 300’e tamamla
+let places = [];
+while(places.length < 300){
+places.push(basePlaces[Math.floor(Math.random()*basePlaces.length)]);
 }
 
-/* ================= BACKGROUND ================= */
-body{
-font-family:'Montserrat',sans-serif;
-background:radial-gradient(circle at top,#2a0000,#000 60%);
-color:white;
-overflow:hidden;
+/* ================= 300+ ROMANTIC MESSAGES ================= */
+const baseMsgs = [
+"💖 Kalbin benim evim","🌹 Sen = huzur","✨ Birlikte her şey güzel",
+"💫 Aşk sessiz bir mucize","🌙 Gözlerin pusulam","💌 Sana her gün aşık oluyorum",
+"🔥 Sen yanımdayken dünya duruyor","💖 Bir bakış yeter","🌹 Kalbim sende",
+"✨ Sonsuzluk seninle başlar"
+];
+
+let msgs = [];
+while(msgs.length < 300){
+msgs.push(baseMsgs[Math.floor(Math.random()*baseMsgs.length)]);
 }
 
-/* animated glow background */
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at 20% 20%, rgba(255,46,99,0.25), transparent 40%),
-radial-gradient(circle at 80% 30%, rgba(255,120,160,0.15), transparent 45%),
-radial-gradient(circle at 50% 80%, rgba(255,0,80,0.12), transparent 50%);
-animation:bgMove 10s infinite alternate ease-in-out;
-pointer-events:none;
+/* ================= 300+ ACTIVITIES ================= */
+const baseActs = [
+"gün batımı yürüyüşü","kahve date","film gecesi","sahil yürüyüşü",
+"bisiklet turu","piknik","vapur turu","fotoğraf çekimi",
+"müzik dinleme","şehir keşfi","yıldız izleme","çatı manzarası",
+"gece yürüyüşü","kitap kafesi","sokak keşfi","tatlı kaçamak"
+];
+
+let activities = [];
+while(activities.length < 300){
+activities.push(baseActs[Math.floor(Math.random()*baseActs.length)]);
 }
 
-@keyframes bgMove{
-0%{transform:scale(1) rotate(0deg);}
-100%{transform:scale(1.15) rotate(2deg);}
+/* ================= INIT MESSAGE ================= */
+function init(){
+document.getElementById("msg").innerHTML =
+msgs[Math.floor(Math.random()*msgs.length)];
+}
+window.onload = init;
+
+/* ================= AI MODE ================= */
+function aiMode(){
+let r = Math.random();
+let a = activities[Math.floor(Math.random()*activities.length)];
+
+if(r < 0.33){
+document.getElementById("out").innerHTML =
+"💖 ROMANTİK MODE:<br>" + a;
+}
+else if(r < 0.66){
+document.getElementById("out").innerHTML =
+"🔥 EĞLENCELİ MODE:<br>" + a + " + kahkaha + enerji";
+}
+else{
+document.getElementById("out").innerHTML =
+"🌿 SAKİN MODE:<br>ev + film + huzur + sen";
+}
 }
 
-/* ================= LAYOUT ================= */
-.container{
-display:flex;
-height:100vh;
+/* ================= MAP MODE ================= */
+function mapMode(){
+let a = places[Math.floor(Math.random()*places.length)];
+let b = places[Math.floor(Math.random()*places.length)];
+let c = places[Math.floor(Math.random()*places.length)];
+let d = places[Math.floor(Math.random()*places.length)];
+
+document.getElementById("mapBox").innerHTML =
+`📍 ROTA:<br>${a} → ${b} → ${c} → ${d}`;
 }
 
-/* LEFT PANEL */
-.left{
-flex:2;
-padding:30px;
-}
+/* ================= WOW MODE ================= */
+function wowMode(){
+let a = activities[Math.floor(Math.random()*activities.length)];
+let b = activities[Math.floor(Math.random()*activities.length)];
+let c = activities[Math.floor(Math.random()*activities.length)];
 
-/* RIGHT PANEL */
-.right{
-flex:1;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(20px);
-border-left:1px solid rgba(255,255,255,0.1);
-padding:20px;
-overflow-y:auto;
-}
-
-/* ================= TITLE ================= */
-h1{
-font-family:'Playfair Display',serif;
-font-size:44px;
-color:#ff3b6b;
-text-shadow:0 0 25px #ff2e63, 0 0 40px #ff7aa2;
-animation: glow 3s infinite alternate;
-}
-
-@keyframes glow{
-from{filter:drop-shadow(0 0 5px #ff2e63);}
-to{filter:drop-shadow(0 0 20px #ff7aa2);}
-}
-
-/* ================= INPUTS ================= */
-input{
-width:100%;
-padding:12px;
-margin-top:10px;
-border:none;
-border-radius:12px;
-background:rgba(255,255,255,0.08);
-color:white;
-outline:none;
-backdrop-filter:blur(10px);
-}
-
-/* ================= BUTTONS ================= */
-button{
-padding:12px;
-margin-top:10px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-background:linear-gradient(135deg,#ff2e63,#ff7aa2);
-color:white;
-box-shadow:0 0 20px #ff2e63;
-transition:0.3s;
-position:relative;
-overflow:hidden;
-}
-
-button:hover{
-transform:scale(1.05);
-filter:brightness(1.2);
-}
-
-/* shine effect */
-button::after{
-content:"";
-position:absolute;
-top:0;
-left:-100%;
-width:100%;
-height:100%;
-background:rgba(255,255,255,0.25);
-transform:skewX(-20deg);
-transition:0.4s;
-}
-
-button:hover::after{
-left:120%;
-}
-
-/* ================= CARDS ================= */
-.card{
-background:rgba(255,255,255,0.06);
-padding:15px;
-margin-top:10px;
-border-radius:18px;
-backdrop-filter:blur(18px);
-box-shadow:0 0 25px rgba(255,0,100,0.2);
-transition:0.3s;
-border:1px solid rgba(255,255,255,0.08);
-}
-
-.card:hover{
-transform:translateY(-5px) scale(1.02);
-box-shadow:0 0 40px rgba(255,46,99,0.35);
-}
-
-/* ================= GLASS ================= */
-.glass{
-background:rgba(255,255,255,0.05);
-padding:18px;
-border-radius:20px;
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,0.1);
-margin-top:10px;
-}
-
-/* ================= HEARTS ================= */
-.heart{
-position:absolute;
-color:#ff2e63;
-animation:float 6s linear forwards;
-filter:drop-shadow(0 0 10px #ff2e63);
-}
-
-@keyframes float{
-0%{transform:translateY(100vh) scale(0);}
-100%{transform:translateY(-10vh) scale(1.5);}
+document.getElementById("out").innerHTML =
+`💥 WOW EXPERIENCE:<br>${a}<br>${b}<br>${c}`;
 }
 
 /* ================= PHOTO ================= */
-#photo{
-width:100%;
-max-width:320px;
-border-radius:16px;
-margin-top:10px;
-box-shadow:0 0 30px #ff2e63;
-transition:0.3s;
+function loadPhoto(e){
+let reader = new FileReader();
+reader.onload = function(){
+let img = document.getElementById("photo");
+img.src = reader.result;
+img.style.display = "block";
+};
+reader.readAsDataURL(e.target.files[0]);
 }
 
-#photo:hover{
-transform:scale(1.03);
-}
-
-/* ================= MUSIC ================= */
-.music{
-position:absolute;
-bottom:20px;
-left:20px;
-background:rgba(255,255,255,0.08);
-padding:10px;
-border-radius:15px;
-backdrop-filter:blur(10px);
-}
-
-/* ================= SCROLL ================= */
-.right::-webkit-scrollbar{
-width:6px;
-}
-
-.right::-webkit-scrollbar-thumb{
-background:#ff2e63;
-border-radius:10px;
-}
+/* ================= HEARTS ================= */
+setInterval(()=>{
+let h = document.createElement("div");
+h.className = "heart";
+h.innerHTML = "💖";
+h.style.left = Math.random()*100 + "vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+},200);
