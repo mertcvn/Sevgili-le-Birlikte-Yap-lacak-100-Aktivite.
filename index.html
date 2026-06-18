@@ -5,25 +5,185 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Askım Sürpriz Kutusu 💖</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a1a1a, #000);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+.container {
+    max-width: 420px;
+    margin: auto;
+}
+
+h1 {
+    color: #ff4da6;
+}
+
+input, button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+button {
+    background: #ff4da6;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.03);
+}
+
+.card {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.08);
+    animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>💖 Askım Sürpriz Kutusu</h1>
-    <p class="subtitle">Bir tarih seç → birlikte yapacağınız görev gelsin ✨</p>
+<h1>💖 Askım Sürpriz Kutusu</h1>
 
-    <input type="date" id="date">
+<input type="date" id="date">
+<button onclick="openSurprise()">Sürprizi Aç 🎁</button>
 
-    <button onclick="openSurprise()">Sürprizi Aç 🎁</button>
-
-    <div id="result"></div>
+<div id="result"></div>
 
 </div>
 
-<script src="script.js"></script>
+<script>
+
+const tasks = [
+"El ele yürüyüşe çıkıp 10 dk sessizce etrafa bakın 🌅",
+"Sahilde oturup hayal kurun 🌊",
+"Gün batımında birlikte fotoğraf çekin 📸",
+"Sokakta kaybolma oyunu oynayın 🗺️",
+"Aynı kahveyi sipariş edip puan verin ☕",
+"Parkta yere uzanıp bulutlara şekil verin ☁️",
+"Rastgele bir otobüse binip keşif yapın 🚌",
+"Bir bankta ilk izleniminizi tekrar anlatın 💭",
+"Şehirde en sevdiğiniz yeri seçin 🏙️",
+"Gece yürüyüşü yapıp en sessiz yeri bulun 🌙",
+"Sokak müzisyenine şarkı seçin 🎶",
+"5 dk telefonsuz oturun 📵",
+"Bir pastanede göz kapalı tatlı seçin 🍰",
+"Taş sektirme yarışması yapın 🪨",
+"Market challenge: 3 TL ile bir şey alın 🛒",
+"Bir parkta birlikte resim çizin 🎨",
+"Playlist yapıp birlikte dinleyin 🎧",
+"Karaoke yapıp gülün 🎤",
+"Bir film sahnesini canlandırın 🎬",
+"Fake röportaj yapın 🎤",
+
+"Birlikte kahve yapın ☕",
+"Film seçemeyip random açın 📺",
+"Battaniye altında sohbet edin 🛋️",
+"Çocukluk anısı paylaşın 👶",
+"10 şarkılık ortak playlist yapın 🎶",
+"Işıkları kapatıp konuşun 🌑",
+"Birbirinize 3 güzel şey söyleyin 💖",
+"Hayali ev çizin 🏠",
+"Korkularınızı paylaşın 🫶",
+"Hayali tatil planlayın ✈️",
+"Aynı anda aynı cümleyi söylemeye çalışın 😂",
+"1 dakika göz göze bakın 👀",
+"Seni seviyorum çünkü oyunu oynayın 💕",
+"En güzel anınızı anlatın 📖",
+"Birbirinize mektup yazın 💌",
+"Film repliği tahmin oyunu oynayın 🎞️",
+"Emoji ile şarkı tahmin edin 🎵",
+"Gülmeden bakma challenge 😄",
+"Rastgele dans edin 💃",
+"1 dakika hikaye uydurun 📚",
+
+"Yıldızlara bakın 🌌",
+"Sessizce el ele yürüyün 🤝",
+"En mutlu anı paylaşın 😊",
+"Birbirinize teşekkür edin 🙏",
+"Gelecek hayali kurun 🔮",
+"Birlikte kahve içip susun ☕",
+"En sevdiğiniz şarkıyı tekrar dinleyin 🔁",
+"Sarılıp 1 dakika bekleyin 🤗",
+"Bugünün en güzel anını seçin ⭐",
+"Yarın planı yapın 🗓️",
+
+"Birlikte yeni bir yer keşfedin 🧭",
+"Sokakta random bir fotoğraf çekin 📷",
+"Birbirinize secret nickname verin 💘",
+"Bir hayali senaryo oluşturun 🎭",
+"Aynı yemeği sipariş edin 🍔",
+"Yürürken müzik paylaşın 🎧",
+"Birbirinizin telefon duvar kağıdını seçin 📱",
+"Birbirinizi çizip tahmin edin ✏️",
+"10 saniyede selfie yarışması 📸",
+"Sessiz film anlatma oyunu 🎬",
+
+"Birlikte market gezip komik şeyler seçin 🛒",
+"Bir duvar yazısını yorumlayın 🧱",
+"Yönsüz yürüyüş yapın 🚶",
+"Birbirinize 5 soru sorun ❓",
+"Birlikte hayali isim hikayesi uydurun 📖",
+"Bir şarkıyı birlikte söyleyin 🎤",
+"Birlikte küçük bir hedef belirleyin 🎯",
+"Birbirinize 3 dilek verin 🌠",
+"Gece yürüyüşünde konuşun 🌙",
+"Birlikte hiçbir şey yapmadan oturun 🫶"
+];
+
+const messages = [
+"Bugün sadece sana ait 💖",
+"Birlikte olmak bile yeter ✨",
+"Seninle her şey daha güzel 💕",
+"Bugün küçük bir an, ama büyük bir his 💫",
+"İyi ki varsın 🫶"
+];
+
+function openSurprise() {
+    const date = document.getElementById("date").value;
+
+    if (!date) {
+        alert("Bir tarih seç 💖");
+        return;
+    }
+
+    const d = new Date(date);
+
+    const taskIndex = (d.getDate() + d.getMonth()) % tasks.length;
+    const msgIndex = Math.floor(Math.random() * messages.length);
+
+    const result = document.getElementById("result");
+
+    result.innerHTML = `
+        <div class="card">
+            <h2>💖 Bugünün Birlikte Görevi</h2>
+            <p style="font-size:18px">${tasks[taskIndex]}</p>
+            <hr style="opacity:0.2">
+            <p style="opacity:0.8">${messages[msgIndex]}</p>
+        </div>
+    `;
+}
+
+</script>
 
 </body>
 </html>
