@@ -43,7 +43,7 @@
         }
 
         // ── AŞK SAYACI ──────────────────────
-        const askBaslangic = new Date(2026, 5, 1); // 1 Haziran 2026
+        const askBaslangic = new Date(2026, 4, 24); // 24 Mayıs 2026
         function gunSayisi() {
             const bugun = new Date();
             const fark = Math.floor((bugun - askBaslangic) / (1000 * 60 * 60 * 24));
