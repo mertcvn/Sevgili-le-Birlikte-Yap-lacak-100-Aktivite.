@@ -1,99 +1,133 @@
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at top, #1a1a1a, #000);
-    z-index: -2;
-}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sevgiliyle 300 Anı</title>
 
-.heart {
-    position: fixed;
-    color: #ff4da6;
-    font-size: 20px;
-    animation: floatUp 6s linear infinite;
-    opacity: 0.6;
-}
-
-@keyframes floatUp {
-    from {
-        transform: translateY(100vh) scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 1;
-    }
-}body {
+<style>
+body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top, #1a1a1a, #000);
+    background: linear-gradient(135deg, #2b0000, #5a0000, #1a0000);
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    overflow-x: hidden;
 }
 
-.container {
+/* HEADER */
+header {
     text-align: center;
-    width: 90%;
-    max-width: 400px;
+    padding: 40px 20px;
 }
 
-h1 {
-    color: #ff4da6;
-    margin-bottom: 5px;
+header h1 {
+    font-size: 40px;
+    color: #ff2e63;
+    text-shadow: 0 0 20px #ff2e63;
 }
 
-.subtitle {
-    opacity: 0.7;
-    margin-bottom: 20px;
+header p {
+    opacity: 0.8;
 }
 
-input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    border: none;
-    margin-bottom: 10px;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    border: none;
-    background: #ff4da6;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: scale(1.03);
-    background: #ff2f91;
-}
-
-.card {
-    margin-top: 20px;
+/* LİSTE KUTUSU */
+.container {
+    max-width: 900px;
+    margin: auto;
     padding: 20px;
-    border-radius: 15px;
-    background: rgba(255,255,255,0.08);
-    animation: pop 0.5s ease;
-    box-shadow: 0 0 20px rgba(255,77,166,0.2);
 }
 
-@keyframes pop {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+ul {
+    list-style: none;
+    padding: 0;
 }
+
+li {
+    background: rgba(255, 0, 60, 0.15);
+    margin: 10px 0;
+    padding: 15px;
+    border-left: 5px solid #ff2e63;
+    border-radius: 12px;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(255, 0, 60, 0.2);
+}
+
+li:hover {
+    transform: scale(1.03);
+    background: rgba(255, 0, 60, 0.25);
+}
+
+/* KALP ANİMASYONU */
+.heart {
+    position: fixed;
+    top: -10px;
+    color: #ff2e63;
+    font-size: 20px;
+    animation: fall 6s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    0% {transform: translateY(0) rotate(0deg);}
+    100% {transform: translateY(100vh) rotate(360deg);}
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    opacity: 0.6;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>💖 Sevgiliyle 300 Anı 💖</h1>
+    <p>Birlikte geçirilen en güzel saatler</p>
+</header>
+
+<div class="container">
+
+<ul>
+<li>12:00 buluşup sarılmak</li>
+<li>Kahvaltı yapmak</li>
+<li>Kahve içip yürümek</li>
+<li>El ele sahil yürüyüşü</li>
+<li>Birbirine hayaller anlatmak</li>
+<li>Fotoğraf çekmek</li>
+<li>Birlikte şarkı dinlemek</li>
+<li>Gülme krizine girmek</li>
+<li>Dondurma yemek</li>
+<li>Gün batımı izlemek</li>
+</ul>
+
+</div>
+
+<footer>
+💞 Made with love 💞
+</footer>
+
+<!-- KALPLER -->
+<script>
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
