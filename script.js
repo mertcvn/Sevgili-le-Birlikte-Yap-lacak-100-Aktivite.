@@ -202,3 +202,25 @@ let c = places[Math.floor(Math.random()*places.length)];
 document.getElementById("mapBox").innerHTML =
 `🗺 <b>RANDOM ROMANTIC ROUTE</b><br>${a} → ${b} → ${c}`;
 }
+
+const USERS = {
+"mertcan": "askim123",
+"mercan": "askim123"
+};
+
+function login(){
+const input = document.getElementById("pass").value;
+
+/* format: kullanıcı:şifre */
+let parts = input.split(":");
+
+let user = parts[0];
+let pass = parts[1];
+
+if(USERS[user] && USERS[user] === pass){
+document.getElementById("login").style.display = "none";
+document.getElementById("app").style.display = "flex";
+}else{
+alert("❌ yanlış giriş formatı (kullanıcı:şifre)");
+}
+}
