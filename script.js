@@ -72,10 +72,19 @@
       }
     });
 
-    // ── AŞK ÇARKI ─────────────────────
-    const canvas = document.getElementById('wheelCanvas');
-    const ctx = canvas.getContext('2d');
-    const segments = [
+    // ── AŞK ÇARKI (20 segment, responsive boyut) ─
+const canvas = document.getElementById('wheelCanvas');
+const ctx = canvas.getContext('2d');
+const wheelContainer = document.querySelector('.wheel-container');
+
+function resizeCanvas() {
+  const size = wheelContainer.clientWidth;
+  canvas.width = size;
+  canvas.height = size;
+  drawWheel();
+}
+
+const segments = [
   '💋 Öpücük', '🤗 Sarılma', '💆 Masaj', '🎬 Film',
   '🍝 Yemek', '💃 Dans', '🎁 Hediye', '🌸 Çiçek',
   '📸 Fotoğraf', '👀 Göz Teması', '🎤 Şarkı', '😂 Komiklik',
@@ -90,43 +99,54 @@ const segColors = [
   '#ffb3ba', '#ff8b94', '#c71585', '#ff69b4',
   '#ff1493', '#db7093', '#f06292', '#ad1457'
 ];
-    let angle = 0;
-    function drawWheel() {
-      const len = segments.length;
-      const arc = (2 * Math.PI) / len;
-      for (let i = 0; i < len; i++) {
-        const start = i * arc;
-        ctx.beginPath();
-        ctx.moveTo(150, 150);
-        ctx.arc(150, 150, 140, start, start + arc);
-        ctx.fillStyle = segColors[i];
-        ctx.fill();
-        ctx.strokeStyle = 'white';
-        ctx.lineWidth = 2;
-        ctx.stroke();
-        ctx.save();
-        ctx.translate(150, 150);
-        ctx.rotate(start + arc / 2);
-        ctx.fillStyle = 'white';
-        ctx.font = 'bold 12px Poppins';
-        ctx.textAlign = 'center';
-        ctx.fillText(segments[i], 100, 5);
-        ctx.restore();
-      }
-    }
-    drawWheel();
-    document.getElementById('spinWheelBtn').addEventListener('click', () => {
-      const spin = Math.random() * 3600 + 720;
-      angle += spin;
-      canvas.style.transition = 'transform 4s cubic-bezier(0.17,0.67,0.12,0.99)';
-      canvas.style.transform = `rotate(${angle}deg)`;
-      setTimeout(() => {
-        const norm = (angle % 360 + 360) % 360;
-        const idx = Math.floor(norm / (360 / segments.length)) % segments.length;
-        document.getElementById('wheelResult').textContent = '🎉 ' + segments[idx] + '!';
-      }, 4100);
-    });
 
+let angle = 0;
+
+function drawWheel() {
+  const size = canvas.width;
+  const center = size / 2;
+  const radius = size * 0.45;
+  const len = segments.length;
+  const arc = (2 * Math.PI) / len;
+
+  ctx.clearRect(0, 0, size, size);
+  for (let i = 0; i < len; i++) {
+    const start = i * arc;
+    ctx.beginPath();
+    ctx.moveTo(center, center);
+    ctx.arc(center, center, radius, start, start + arc);
+    ctx.fillStyle = segColors[i];
+    ctx.fill();
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.save();
+    ctx.translate(center, center);
+    ctx.rotate(start + arc / 2);
+    ctx.fillStyle = 'white';
+    ctx.font = `bold ${Math.floor(radius * 0.2)}px Poppins`;
+    ctx.textAlign = 'center';
+    ctx.fillText(segments[i], radius * 0.7, 5);
+    ctx.restore();
+  }
+}
+
+// İlk çizim ve pencere boyutu değişince yeniden çiz
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+document.getElementById('spinWheelBtn').addEventListener('click', () => {
+  const spin = Math.random() * 3600 + 720;
+  angle += spin;
+  canvas.style.transition = 'transform 4s cubic-bezier(0.17,0.67,0.12,0.99)';
+  canvas.style.transform = `rotate(${angle}deg)`;
+  setTimeout(() => {
+    const norm = (angle % 360 + 360) % 360;
+    const idx = Math.floor(norm / (360 / segments.length)) % segments.length;
+    document.getElementById('wheelResult').textContent = '🎉 ' + segments[idx] + '!';
+  }, 4100);
+});
     // ── AKTİVİTE LİSTELERİ (100'er adet) ─
     const romantic = [
       "Mum ışığında evde akşam yemeği","Birlikte gün batımı izleyin","El ele yıldızları seyredin",
