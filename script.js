@@ -34,6 +34,14 @@
       document.body.classList.toggle('night-mode');
       nightToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
     });
+    // Rotalar panelini aç/kapat
+const routeTitle = document.querySelector('.toggle-routes');
+const routesPanel = document.getElementById('routesContainer');
+
+routeTitle.addEventListener('click', () => {
+  routesPanel.classList.toggle('open');
+  routeTitle.classList.toggle('open');
+});
     const starsContainer = document.getElementById('starsContainer');
     for (let i = 0; i < 100; i++) {
       const star = document.createElement('div');
