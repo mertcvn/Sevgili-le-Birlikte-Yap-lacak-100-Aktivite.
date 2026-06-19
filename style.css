@@ -244,13 +244,18 @@ body.night-mode .night-mode-toggle { background:rgba(255,255,255,0.05); }
   box-shadow: 0 10px 30px rgba(255, 61, 111, 0.8);
 }
 
-/* Mobilde çarkı küçült */
+.wheel-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto 15px;
+}
+
 @media (max-width: 600px) {
   .wheel-container {
     width: 250px;
     height: 250px;
   }
-    
   .wheel-pointer {
     font-size: 1.6rem;
   }
