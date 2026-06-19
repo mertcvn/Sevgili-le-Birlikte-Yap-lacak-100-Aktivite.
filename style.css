@@ -319,3 +319,7 @@ body.night-mode .night-mode-toggle { background:rgba(255,255,255,0.05); }
 .toggle-routes.open .toggle-icon {
   transform: rotate(180deg);
 }
+/* Gizli rotalar */
+.route-set.route-hidden {
+    display: none;
+}
