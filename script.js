@@ -424,7 +424,6 @@
       { name:'🌸 Beylerbeyi Sarayı', stops:[ {name:'Beylerbeyi Sarayı', query:'Beylerbeyi+Sarayı+İstanbul'}, {name:'Beylerbeyi Sahili', query:'Beylerbeyi+Sahili+İstanbul'}, {name:'Beylerbeyi Camii', query:'Beylerbeyi+Camii+İstanbul'}, {name:'Çengelköy', query:'Çengelköy+İstanbul'} ] },
       { name:'🌉 Fatih Sultan Mehmet Köprüsü', stops:[ {name:'FSM Köprüsü', query:'Fatih+Sultan+Mehmet+Köprüsü+İstanbul'}, {name:'Rumeli Hisarı', query:'Rumeli+Hisarı+İstanbul'}, {name:'Anadolu Hisarı', query:'Anadolu+Hisarı+İstanbul'}, {name:'Emirgan', query:'Emirgan+İstanbul'} ] }
     ];
-    ];
     // Render routes
     const routesContainer = document.getElementById('routesContainer');
     routesContainer.innerHTML = '';
