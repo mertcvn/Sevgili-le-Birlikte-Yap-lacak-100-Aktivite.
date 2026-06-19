@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Site şifre -->
+    <!-- Şifre -->
     <div class="password-overlay" id="passwordOverlay">
         <div class="password-box">
             <h2>💖 Aşk Rotası</h2>
@@ -69,7 +69,7 @@
             </div>
             <h1 class="header-title">💖 Aşk Rotası</h1>
             <p class="header-subtitle">✦ 300 Aktivite ✦ Sürprizler ✦ İstanbul ✦</p>
-            <p class="love-counter">💕 Birlikte <span id="dayCount">25</span>. Günümüz</p>
+            <p class="love-counter">💕 birlikte <span id="dayCount">25</span>. günümüz</p>
             <p class="love-names">Mertcan ❤️ Mercan</p>
             <button class="surprise-btn letter-btn" id="openLetterBtn" style="margin-top:8px; background:rgba(255,255,255,0.2); border:1px solid #ffb6c1; font-size:0.9rem;">💌 Gizli Mektup</button>
         </div>
@@ -90,52 +90,46 @@
             <div class="activity-card" id="card2"><span class="mystery-text">❓</span><span class="mystery-label">?</span><div class="card-shimmer"></div></div>
         </div>
 
-        <!-- Aşk Çarkı -->
-<div class="glass-card" style="text-align:center;">
-    <h3 class="section-title">🎡 Aşk Çarkı</h3>
-    <div class="wheel-pointer">▼</div>
-    <div class="wheel-container">
-        <canvas id="wheelCanvas" width="300" height="300"></canvas>
-    </div>
-    <button class="wheel-spin-btn" id="spinWheelBtn">🎲 Çevir!</button>
-    <div class="wheel-result" id="wheelResult"></div>
-</div>
+        <!-- Aşk çarkı -->
+        <div class="glass-card" style="text-align:center;">
+            <h3 class="section-title">🎡 Aşk Çarkı</h3>
+            <div class="wheel-pointer">▼</div>
+            <div class="wheel-container">
+                <canvas id="wheelCanvas" width="300" height="300"></canvas>
+            </div>
+            <button class="wheel-spin-btn" id="spinWheelBtn">🎲 Çevir!</button>
+            <div class="wheel-result" id="wheelResult"></div>
+        </div>
 
         <!-- Fotoğraf slider + sürükle bırak -->
-<div class="glass-card" style="text-align:center;">
-    <h3 class="section-title">📸 Bizim Anılar</h3>
-    
-    <!-- Slider -->
-    <div class="slider-container">
-        <button class="slider-btn prev-btn">◀</button>
-        <div class="slider">
-            <img src="biz.jpg" class="slider-img active" alt="Biz">
-            <img src="biz2.jpg" class="slider-img" alt="Biz2">
-            <img src="biz3.jpg" class="slider-img" alt="Biz3">
-            <img src="biz4.jpg" class="slider-img" alt="Biz4">
-            <img src="biz5.jpg" class="slider-img" alt="Biz5">
-            <img src="biz6.jpg" class="slider-img" alt="Biz6">
+        <div class="glass-card" style="text-align:center;">
+            <h3 class="section-title">📸 Bizim Anılar</h3>
+            <div class="slider-container">
+                <button class="slider-btn prev-btn">◀</button>
+                <div class="slider">
+                    <img src="biz.jpg" class="slider-img active" alt="Biz">
+                    <img src="biz2.jpg" class="slider-img" alt="Biz2">
+                    <img src="biz3.jpg" class="slider-img" alt="Biz3">
+                    <img src="biz4.jpg" class="slider-img" alt="Biz4">
+                    <img src="biz5.jpg" class="slider-img" alt="Biz5">
+                    <img src="biz6.jpg" class="slider-img" alt="Biz6">
+                </div>
+                <button class="slider-btn next-btn">▶</button>
+            </div>
+            <div class="slider-dots">
+                <span class="dot active-dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="drop-zone" id="dropZone">
+                <p>📥 Fotoğraf sürükle / buraya tıkla</p>
+                <input type="file" id="fileInput" accept="image/*" multiple hidden>
+            </div>
+            <div class="extra-photos" id="extraPhotos"></div>
         </div>
-        <button class="slider-btn next-btn">▶</button>
-    </div>
-
-    <!-- Alt noktalar -->
-    <div class="slider-dots">
-        <span class="dot active-dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-    </div>
-
-    <!-- Sürükle / bırak alanı -->
-    <div class="drop-zone" id="dropZone">
-        <p>📥 Fotoğraf sürükle / buraya tıkla</p>
-        <input type="file" id="fileInput" accept="image/*" multiple hidden>
-    </div>
-    <div class="extra-photos" id="extraPhotos"></div>
-</div>
 
         <!-- Günün rengi -->
         <div class="glass-card">
@@ -170,17 +164,14 @@
 
         <!-- İstanbul rotaları -->
         <div class="glass-card">
-    <h3 class="section-title">🗺️ İstanbul Rotaları</h3>
-    <div id="routesContainer"></div>
-            <button id="toggleRoutesBtn" class="surprise-btn" style="padding:10px 25px; font-size:0.9rem; width:auto;">
-    ▼ Daha Fazla Göster
-</button>
-    <div style="text-align:center; margin-top:15px;">
-        <button id="toggleRoutesBtn" class="surprise-btn" style="padding:10px 25px; font-size:0.9rem; width:auto;">
-            ▼ Daha Fazla Göster
-        </button>
-    </div>
-</div>
+            <h3 class="section-title">🗺️ İstanbul Rotaları</h3>
+            <div id="routesContainer"></div>
+            <div style="text-align:center; margin-top:15px;">
+                <button id="toggleRoutesBtn" class="surprise-btn" style="padding:10px 25px; font-size:0.9rem; width:auto;">
+                    ▼ Daha Fazla Göster
+                </button>
+            </div>
+        </div>
 
         <!-- Geçmiş -->
         <div class="glass-card" style="text-align:center;">
