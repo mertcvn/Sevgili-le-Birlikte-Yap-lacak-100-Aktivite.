@@ -93,35 +93,39 @@
       drawWheel();
     }
     function drawWheel() {
-      const size = canvas.width;
-      const center = size / 2;
-      const radius = size * 0.42;
-      const len = segments.length;
-      const arc = (2 * Math.PI) / len;
-      ctx.clearRect(0, 0, size, size);
-      for (let i = 0; i < len; i++) {
-        const start = i * arc;
-        const end = start + arc;
-        ctx.beginPath();
-        ctx.moveTo(center, center);
-        ctx.arc(center, center, radius, start, end);
-        ctx.fillStyle = segColors[i];
-        ctx.fill();
-        ctx.strokeStyle = 'white';
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-        ctx.save();
-        ctx.translate(center, center);
-        ctx.rotate(start + arc / 2);
-        let fontSize = Math.max(5, Math.floor(radius * 0.11));
-        ctx.font = `bold ${fontSize}px 'Poppins', sans-serif`;
-        ctx.fillStyle = 'white';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(segments[i], radius * 0.75, 0);
-        ctx.restore();
-      }
-    }
+  const size = canvas.width;
+  const center = size / 2;
+  const radius = size * 0.46;          // Yarıçap biraz daha büyük
+  const len = segments.length;
+  const arc = (2 * Math.PI) / len;
+  ctx.clearRect(0, 0, size, size);
+  for (let i = 0; i < len; i++) {
+    const start = i * arc;
+    const end = start + arc;
+    ctx.beginPath();
+    ctx.moveTo(center, center);
+    ctx.arc(center, center, radius, start, end);
+    ctx.fillStyle = segColors[i];
+    ctx.fill();
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.save();
+    ctx.translate(center, center);
+    ctx.rotate(start + arc / 2);
+
+    // Font boyutunu otomatik hesapla (küçük ama okunaklı)
+    let fontSize = Math.max(8, Math.floor(radius * 0.13));
+    ctx.font = `bold ${fontSize}px 'Poppins', sans-serif`;
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    
+    // Yazıyı dış kenara yaklaştır (radius'in %82'si)
+    ctx.fillText(segments[i], radius * 0.82, 0);
+    ctx.restore();
+  }
+}
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     document.getElementById('spinWheelBtn').addEventListener('click', () => {
